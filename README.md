@@ -20,5 +20,5 @@ Plagiarism detection system
 # Contributor 
 
 1. Kartik Pant
-2. Pratyush Bameta
+2. Pratyush Bameta(hello)
 3. Aarav Raj (AI)
