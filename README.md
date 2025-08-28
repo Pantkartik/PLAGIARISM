@@ -21,4 +21,4 @@ Plagiarism detection system
 
 1. Kartik Pant
 2. Pratyush Bameta
-3. Aarav Raj 
+3. Aarav Raj (AI)
