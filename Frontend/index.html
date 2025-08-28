@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Plagiarism Detector (Jaccard)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Simple Plagiarism Detector</h1>
+    <p class="subtitle">Client-side similarity using <em>shingling</em> and <em>Jaccard</em> similarity. No data leaves the browser.</p>
+
+    <section class="inputs">
+      <div class="input-block">
+        <label for="textA">Text A</label>
+        <textarea id="textA" placeholder="Paste or type the first text..."></textarea>
+      </div>
+      <div class="input-block">
+        <label for="textB">Text B</label>
+        <textarea id="textB" placeholder="Paste or type the second text..."></textarea>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="control">
+        <label for="k">Shingle size (k)</label>
+        <input id="k" type="number" min="2" max="10" step="1" value="5" />
+      </div>
+      <div class="control">
+        <label for="normalize">Normalize</label>
+        <select id="normalize">
+          <option value="lower_punct" selected>Lowercase + strip punctuation</option>
+          <option value="lower_only">Lowercase only</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+      <button id="checkBtn">Check Similarity</button>
+      <button id="swapBtn" class="secondary">Swap A ↔ B</button>
+      <button id="clearBtn" class="ghost">Clear</button>
+    </section>
+
+    <section class="results">
+      <div class="score">
+        <div class="score-label">Similarity</div>
+        <div id="scoreValue" class="score-value">0.00%</div>
+        <div id="scoreScale" class="score-scale">(0.0000)</div>
+      </div>
+
+      <div class="bars">
+        <div class="bar">
+          <div class="bar-fill" id="barFill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <details class="details">
+        <summary>Details</summary>
+        <div class="grid">
+          <div>
+            <strong>k‑shingles A</strong>
+            <pre id="shinglesA" class="code"></pre>
+          </div>
+          <div>
+            <strong>k‑shingles B</strong>
+            <pre id="shinglesB" class="code"></pre>
+          </div>
+          <div class="wide">
+            <strong>Intersection ∩</strong>
+            <pre id="intersectSet" class="code"></pre>
+          </div>
+          <div class="wide">
+            <strong>Union ∪</strong>
+            <pre id="unionSet" class="code"></pre>
+          </div>
+          <div class="stats">
+            <div>Intersection size: <span id="iSize">0</span></div>
+            <div>Union size: <span id="uSize">0</span></div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <small>
+        Uses character shingling and Jaccard similarity \( J(A,B) = \frac{|A \cap B|}{|A \cup B|} \). Adjust k for sensitivity. [11][12]
+      </small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
